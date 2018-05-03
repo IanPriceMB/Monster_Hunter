@@ -13,26 +13,26 @@ var monIndex = 0;
 
 function setup(){
 //make our weapons (buttons)
-    for(var i = 0; i < weaponImages; i++) {
-        weapon = $("<div>");
-        weapon.addClass("wepButton");
-        weapon.attr('id', "btn" + i);
-        weapon.attr("power", arrAttack[Math.floor(Math.random() * arrAttack.length)]);
-        btns.append(weapon);
-    }
-//add <img> tags to the divs so that i can stick img's in them
-    for(var i = 0; i < 4; i++) {
-        var elem = document.createElement("img");
-        document.getElementById("btn" + i).appendChild(elem);
-//will cycle trhough pics in array (for attaching to buttons) when called in for loop after buttons are made
-        function weaponPic(){
-                var a = weaponImages[imgIndex];
-                imgIndex++;
-                return a;
-        };
+     for(var i = 0; i < weaponImages.length; i++) {
+         weapon = $("<div>");
+         weapon.addClass("wepButton");
+         weapon.attr('id', "btn" + i);
+         weapon.attr("power", arrAttack[Math.floor(Math.random() * arrAttack.length)]);
+         btns.append(weapon);
+     }
+ //add <img> tags to the divs so that i can stick img's in them
+     for(var i = 0; i < 4; i++) {
+         var elem = document.createElement("img");
+         document.getElementById("btn" + i).appendChild(elem);
+ //will cycle trhough pics in array (for attaching to buttons) when called in for loop after buttons are made
+         function weaponPic(){
+                 var a = weaponImages[imgIndex];
+                 imgIndex++;
+                 return a;
+         }
         elem.src = weaponPic();
     }  
-//generate some hp
+// generate some hp
     HP = Math.floor(Math.random() * 100) +40;
     document.getElementById("monsterhp").innerHTML = HP;
 }
